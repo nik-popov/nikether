@@ -17,7 +17,7 @@ const fontPtSans = PT_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Rhythmic Canvas",
+  title: "Nikether Title Music",
   description: "Super cool animated DJ/artist producer website",
 };
 
