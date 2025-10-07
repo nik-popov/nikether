@@ -34,10 +34,9 @@ const TourDates: React.FC = () => {
                   </div>
                   <div className="flex items-center gap-4">
                     <Badge
-                      variant={item.status === 'Sold Out' ? 'outline' : 'secondary'}
+                      variant={item.status === 'Sold Out' ? 'destructive' : 'secondary'}
                       className={cn(
                         item.status === 'On Sale' && 'bg-accent/80 text-accent-foreground border-transparent',
-                        item.status === 'Sold Out' && 'border-destructive text-destructive accent-glow'
                       )}
                     >
                         {item.status}
