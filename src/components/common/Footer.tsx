@@ -8,7 +8,7 @@ import { artistName } from '@/lib/data';
 const Footer: React.FC = () => {
     return (
         <footer className="bg-background/50 border-t border-white/10 py-8">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center gap-6">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-end gap-6">
                 <div className="flex items-center gap-4">
                     {socialLinks.map((link) => (
                         <Button
