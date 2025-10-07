@@ -7,13 +7,15 @@ Next.js + Tailwind workspace for the Nik Ether radio experience. The site expose
 Create a `.env.local` file at the project root and supply the following (defaults are provided for Nik Ether's hosted stream):
 
 ```
-ICECAST_STATUS_URL="https://control.internet-radio.com:2199/external/rpc.php?m=streaminfo.get"
+ICECAST_STATUS_URL="https://control.internet-radio.com/external/rpc.php?m=streaminfo.get"
 ICECAST_USERNAME="apispopov"
 ICECAST_MOUNT="/stream"
 ICECAST_TIMEOUT=5000
 ```
 
 Override these values if you need to point the app at a different Centova/Icecast installation.
+
+> ℹ️ Cloudflare Workers can only call upstream services on ports 80, 443, 2052, 2053, 2082, 2083, 2086, 2087, 2095, and 2096. If your Icecast server listens on a different port, place it behind a proxy or expose it on one of the allowed ports before deploying.
 
 ## Development
 

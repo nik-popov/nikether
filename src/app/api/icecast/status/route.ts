@@ -4,6 +4,7 @@ import { normalizeCentovaResponse, normalizeIcecastResponse } from "@/lib/icecas
 const DECODER_PRIORITIES = ["utf-8", "iso-8859-1", "latin1"] as const;
 const DIRECT_STREAM_HINTS = [".mp3", ".aac", ".aacp", ".m4a", ".ogg", ".opus", ".webm"] as const;
 const PLAYLIST_EXTENSIONS = [".m3u", ".m3u8", ".pls", ".xspf"] as const;
+const CLOUDFLARE_ALLOWED_PORTS = new Set(["", "80", "443", "2052", "2053", "2082", "2083", "2086", "2087", "2095", "2096"]);
 
 const decodeJson = (buffer: ArrayBuffer): unknown => {
   for (const encoding of DECODER_PRIORITIES) {
@@ -58,7 +59,17 @@ const resolvePlaybackUrl = async (url: string | null, signal: AbortSignal): Prom
   }
 
   try {
-    const response = await fetch(url, {
+    let playlistUrl: URL;
+
+    try {
+      playlistUrl = new URL(url);
+    } catch {
+      return url;
+    }
+
+    const { adjusted: workerCompatibleUrl } = ensureWorkerCompatiblePort(playlistUrl);
+
+    const response = await fetch(workerCompatibleUrl.toString(), {
       method: "GET",
       cache: "no-store",
       redirect: "follow",
@@ -93,7 +104,7 @@ const resolvePlaybackUrl = async (url: string | null, signal: AbortSignal): Prom
 
 const DEFAULT_STATUS_URL =
   process.env.ICECAST_STATUS_URL ??
-  "https://control.internet-radio.com:2199/external/rpc.php?m=streaminfo.get";
+  "https://control.internet-radio.com/external/rpc.php?m=streaminfo.get";
 const DEFAULT_USERNAME = process.env.ICECAST_USERNAME ?? "apispopov";
 const DEFAULT_MOUNT = process.env.ICECAST_MOUNT ?? "/stream";
 const REQUEST_TIMEOUT = Number(process.env.ICECAST_TIMEOUT ?? 5000);
@@ -101,9 +112,49 @@ const REQUEST_TIMEOUT = Number(process.env.ICECAST_TIMEOUT ?? 5000);
 export const revalidate = 0;
 export const runtime = "edge";
 
+type WorkerCompatibilityResult = {
+  adjusted: URL;
+  portAdjusted: boolean;
+  originalPort: string | null;
+};
+
+const ensureWorkerCompatiblePort = (incoming: URL): WorkerCompatibilityResult => {
+  const clone = new URL(incoming.toString());
+  const port = clone.port;
+
+  if (!clone.protocol.startsWith("http")) {
+    return {
+      adjusted: clone,
+      portAdjusted: false,
+      originalPort: null,
+    };
+  }
+
+  if (CLOUDFLARE_ALLOWED_PORTS.has(port)) {
+    return {
+      adjusted: clone,
+      portAdjusted: false,
+      originalPort: null,
+    };
+  }
+
+  const adjusted = new URL(clone.toString());
+  adjusted.port = "";
+
+  return {
+    adjusted,
+    portAdjusted: true,
+    originalPort: port || null,
+  };
+};
+
 export async function GET() {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT);
+  let requestedUrl = DEFAULT_STATUS_URL;
+  let resolvedUrl = DEFAULT_STATUS_URL;
+  let portAdjusted = false;
+  let originalPort: string | null = null;
 
   try {
     const url = new URL(DEFAULT_STATUS_URL);
@@ -119,7 +170,14 @@ export async function GET() {
       url.searchParams.set(mountParam, mount);
     }
 
-    const response = await fetch(url.toString(), {
+    const compatibility = ensureWorkerCompatiblePort(url);
+    const workerUrl = compatibility.adjusted;
+    portAdjusted = compatibility.portAdjusted;
+    originalPort = compatibility.originalPort;
+    requestedUrl = url.toString();
+    resolvedUrl = workerUrl.toString();
+
+    const response = await fetch(resolvedUrl, {
       signal: controller.signal,
       cache: "no-store",
       headers: {
@@ -158,11 +216,18 @@ export async function GET() {
       ...status,
       playbackUrl: playbackUrl ?? status.playbackUrl ?? status.listenUrl ?? null,
     };
+    const upstreamMeta = {
+      requested: requestedUrl,
+      resolved: resolvedUrl,
+      portFallbackApplied: portAdjusted,
+      originalPort: originalPort ?? undefined,
+    };
 
     return NextResponse.json({
       status: enhancedStatus,
       updatedAt: new Date().toISOString(),
-      upstream: url.toString(),
+      upstream: resolvedUrl,
+      upstreamMeta,
     });
   } catch (error) {
     const message =
@@ -173,7 +238,24 @@ export async function GET() {
           : "Unexpected error while fetching Icecast status";
 
     const statusCode = message.includes("timed out") ? 504 : 500;
-    return NextResponse.json({ error: message }, { status: statusCode });
+    const portGuidance =
+      portAdjusted && originalPort
+        ? ` Cloudflare Workers cannot reach port ${originalPort}. Please expose the endpoint on an allowed port (80, 443, 2052, 2053, 2082, 2083, 2086, 2087, 2095, or 2096) or update ICECAST_STATUS_URL to use one of those ports.`
+        : "";
+
+    return NextResponse.json(
+      {
+        error: `${message}${portGuidance}`.trim(),
+        upstream: resolvedUrl,
+        upstreamMeta: {
+          requested: requestedUrl,
+          resolved: resolvedUrl,
+          portFallbackApplied: portAdjusted,
+          originalPort: originalPort ?? undefined,
+        },
+      },
+      { status: statusCode }
+    );
   } finally {
     clearTimeout(timeout);
   }

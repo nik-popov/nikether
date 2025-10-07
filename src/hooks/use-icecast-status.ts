@@ -7,6 +7,12 @@ type IcecastApiResponse = {
   status: IcecastStatus;
   updatedAt: string;
   upstream?: string;
+  upstreamMeta?: {
+    requested: string;
+    resolved: string;
+    portFallbackApplied: boolean;
+    originalPort?: string;
+  };
 };
 
 export type IcecastHistoryEntry = {
@@ -54,6 +60,7 @@ export const useIcecastStatus = (pollInterval: number = DEFAULT_INTERVAL): UseIc
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const isInitialFetchCompleted = useRef<boolean>(false);
   const lastTrackRef = useRef<string | null>(null);
+  const hasLoggedPortFallback = useRef<boolean>(false);
 
   const fetchStatus = useCallback(
     async (options: { silent?: boolean } = {}) => {
@@ -77,12 +84,27 @@ export const useIcecastStatus = (pollInterval: number = DEFAULT_INTERVAL): UseIc
         setError(null);
         isInitialFetchCompleted.current = true;
 
-    const trackTitle = json.status?.track?.title?.trim() ?? null;
-    const trackArtist = json.status?.track?.artist?.trim() ?? null;
-    const artworkUrl = json.status?.track?.artworkUrl ?? null;
-    const currentTitle = json.status?.currentlyPlaying?.trim() ?? null;
-    const combinedLabel = [trackArtist, trackTitle].filter(Boolean).join(" – ") || null;
-    const displayTitle = currentTitle ?? combinedLabel ?? trackTitle ?? null;
+        if (json.upstreamMeta?.portFallbackApplied && !hasLoggedPortFallback.current) {
+          hasLoggedPortFallback.current = true;
+          const fallbackMessage = [
+            "Icecast status endpoint required a port fallback for Cloudflare Workers.",
+            json.upstreamMeta.originalPort
+              ? `Original port ${json.upstreamMeta.originalPort} is not allowed.`
+              : undefined,
+            `Resolved URL: ${json.upstreamMeta.resolved}`,
+          ]
+            .filter(Boolean)
+            .join(" ");
+
+          // eslint-disable-next-line no-console
+          console.warn(fallbackMessage);
+        }
+        const trackTitle = json.status?.track?.title?.trim() ?? null;
+        const trackArtist = json.status?.track?.artist?.trim() ?? null;
+        const artworkUrl = json.status?.track?.artworkUrl ?? null;
+        const currentTitle = json.status?.currentlyPlaying?.trim() ?? null;
+        const combinedLabel = [trackArtist, trackTitle].filter(Boolean).join(" – ") || null;
+        const displayTitle = currentTitle ?? combinedLabel ?? trackTitle ?? null;
         const normalizedDisplayTitle = displayTitle?.trim() ?? null;
         const trackChanged = normalizedDisplayTitle && normalizedDisplayTitle !== lastTrackRef.current;
 
