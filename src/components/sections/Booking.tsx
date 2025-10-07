@@ -49,11 +49,11 @@ const Booking: React.FC = () => {
     }
 
   return (
-    <Section id="booking" title="Booking Inquiries">
+    <Section id="booking" title="Contact & Booking">
       <div className="max-w-2xl mx-auto">
-        <Card className="border-white/10 bg-secondary/30 backdrop-blur-sm">
+        <Card className="border-white/10 bg-card backdrop-blur-sm shadow-lg">
             <CardHeader>
-                <CardTitle>Book Rhythmic Canvas</CardTitle>
+                <CardTitle>Book Nikether Title Music</CardTitle>
                 <CardDescription>Fill out the form below to inquire about a booking.</CardDescription>
             </CardHeader>
             <CardContent>

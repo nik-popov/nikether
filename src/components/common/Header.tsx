@@ -11,16 +11,14 @@ const Logo = () => (
       <path d="M2 7L12 12M22 7L12 12M12 22V12" stroke="hsl(var(--accent))" strokeWidth="1.5" strokeLinejoin="round"/>
       <path d="M17 4.5L7 9.5" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
     </svg>
-    <span className="text-xl font-headline font-bold text-glow">Rhythmic Canvas</span>
+    <span className="text-xl font-headline font-bold text-glow">Nikether Title Music</span>
   </div>
 );
 
 const navItems = [
-  { name: "Visuals", id: "visuals" },
+  { name: "Home", id: "visuals" },
   { name: "Music", id: "music" },
-  { name: "About", id: "about" },
-  { name: "Tour", id: "tour" },
-  { name: "Merch", id: "merch" },
+  { name: "Performances", id: "tour" },
   { name: "Booking", id: "booking" },
 ];
 

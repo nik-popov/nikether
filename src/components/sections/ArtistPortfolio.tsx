@@ -8,9 +8,7 @@ const ArtistPortfolio: React.FC = () => {
   return (
     <>
       <Discography />
-      <Biography />
       <TourDates />
-      <Merchandise />
     </>
   );
 };

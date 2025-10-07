@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -14,6 +14,7 @@ import { useAppContext } from '@/contexts/AppContext';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { cn } from '@/lib/utils';
 import { Loader, Palette, Rabbit, Snail, Waves, Wand2, Bot } from 'lucide-react';
+import { gsap } from "gsap";
 
 const HeroVisualizer: React.FC = () => {
   const { toast } = useToast();
@@ -32,6 +33,16 @@ const HeroVisualizer: React.FC = () => {
   
   const [isGenerating, setIsGenerating] = useState(false);
   const [isMoodSetting, setIsMoodSetting] = useState(false);
+
+  const heroRef = useRef<HTMLDivElement>(null);
+  const q = gsap.utils.selector(heroRef);
+
+  useEffect(() => {
+    gsap.fromTo(q(".anim-title"), { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 1, ease: "power3.out", delay: 0.2 });
+    gsap.fromTo(q(".anim-subtitle"), { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 1, ease: "power3.out", delay: 0.4 });
+    gsap.fromTo(q(".anim-card"), { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 1, ease: "power3.out", delay: 0.6 });
+    gsap.fromTo(q(".anim-controls"), { x: 50, opacity: 0 }, { x: 0, opacity: 1, duration: 1, ease: "power3.out", delay: 0.8 });
+  }, [q]);
 
   const handleMoodSet = async () => {
     if (!keywords) return;
@@ -88,7 +99,7 @@ const HeroVisualizer: React.FC = () => {
 
 
   return (
-    <section id="visuals" className="relative h-screen min-h-[700px] flex items-center justify-center text-center overflow-hidden">
+    <section id="visuals" className="relative h-screen min-h-[700px] flex items-center justify-center text-center overflow-hidden" ref={heroRef}>
       <div className="absolute inset-0 z-0">
         <Image
           key={visualUrl}
@@ -99,18 +110,18 @@ const HeroVisualizer: React.FC = () => {
           className="object-cover animate-visualizer-pan"
           data-ai-hint={visualHint}
         />
-        <div className="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
       </div>
 
       <div className="relative z-10 p-4 flex flex-col items-center">
-        <h1 className="text-6xl md:text-8xl font-black font-headline uppercase tracking-tighter text-glow">
-          Rhythmic Canvas
+        <h1 className="text-6xl md:text-8xl font-black font-headline uppercase tracking-tighter text-glow anim-title">
+          Nikether Title Music
         </h1>
-        <p className="mt-4 text-lg md:text-xl max-w-2xl text-foreground/80">
+        <p className="mt-4 text-lg md:text-xl max-w-2xl text-foreground/80 anim-subtitle">
           An immersive audio-visual experience powered by generative AI.
         </p>
 
-        <Card className="mt-8 bg-background/50 backdrop-blur-md border-white/10 w-full max-w-lg">
+        <Card className="mt-8 bg-background/50 backdrop-blur-md border-white/10 w-full max-w-lg anim-card">
           <CardHeader>
             <CardTitle className="flex items-center gap-2"><Bot /> AI-Powered Mood Setter</CardTitle>
           </CardHeader>
@@ -133,7 +144,7 @@ const HeroVisualizer: React.FC = () => {
         </Card>
       </div>
       
-      <Card className="absolute z-20 bottom-24 md:bottom-auto md:top-1/2 md:-translate-y-1/2 md:right-4 bg-background/50 backdrop-blur-md border-white/10 w-[calc(100%-2rem)] md:w-80">
+      <Card className="absolute z-20 bottom-24 md:bottom-auto md:top-1/2 md:-translate-y-1/2 md:right-4 bg-background/50 backdrop-blur-md border-white/10 w-[calc(100%-2rem)] md:w-80 anim-controls">
           <CardHeader>
               <CardTitle className="text-lg">Interactive Controls</CardTitle>
           </CardHeader>

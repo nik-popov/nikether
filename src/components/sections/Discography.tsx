@@ -13,10 +13,10 @@ const Discography: React.FC = () => {
   const { playTrack } = useAppContext();
 
   return (
-    <Section id="music" title="Discography">
+    <Section id="music" title="Top Tracks">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
         {discography.map((track: Track) => (
-          <Card key={track.id} className="group overflow-hidden border-white/10 bg-secondary/30 backdrop-blur-sm">
+          <Card key={track.id} className="group overflow-hidden border-white/10 bg-card backdrop-blur-sm shadow-lg">
             <CardContent className="p-0 relative">
               <Image
                 src={track.cover}
