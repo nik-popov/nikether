@@ -39,6 +39,7 @@ wrangler login
 - Ensure your Cloudflare account has a Workers plan.
 - Create a Cloudflare API token with the **Workers Scripts** and **Pages Write** permissions, or use **Edit Cloudflare Workers** template. Store the token in `CLOUDFLARE_API_TOKEN` and your account identifier in `CLOUDFLARE_ACCOUNT_ID` for CI deployments (add them as project/environment variables). When running locally you can instead rely on `wrangler login`.
 - The build step drops a `.assetsignore` file into `.vercel/output/static` so the generated `_worker.js` directory isn't uploaded as a static asset. If you customize the output directory, update `scripts/prepare-cloudflare.js` accordingly.
+- Before deploy, `npm run cf:deploy` runs `scripts/verify-backend.js` to hit the Icecast endpoint with the same parameters the Worker uses. Set `SKIP_BACKEND_CHECK=true` if you need to bypass it temporarily (for example, in local dev without Internet access).
 
 ### Build and preview locally
 

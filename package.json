@@ -10,10 +10,10 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-  "cf:build": "next-on-pages && node scripts/prepare-cloudflare.js",
+  "cf:build": "node scripts/clean-dist.js && next-on-pages && node scripts/prepare-cloudflare.js",
   "cf:verify-backend": "node scripts/verify-backend.js",
   "cf:deploy": "npm run cf:build && npm run cf:verify-backend && wrangler deploy",
-  "cf:preview": "npm run cf:build && wrangler pages dev .vercel/output/static --binding __NEXT_ON_PAGES_RUNTIME_MANIFEST=./.vercel/output/static/_worker.js --pages-asset-binding ASSETS"
+    "cf:preview": "npm run cf:build && wrangler pages dev .vercel/output/static --binding __NEXT_ON_PAGES_RUNTIME_MANIFEST=./.vercel/output/static/_worker.js/index.js"
   },
   "dependencies": {
     "@genkit-ai/google-genai": "^1.20.0",
