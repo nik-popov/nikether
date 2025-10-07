@@ -13,7 +13,6 @@ import { formatDistanceToNow } from 'date-fns';
 const MusicPlayer: React.FC = () => {
   const context = useAppContext();
 
-  if (!context) return null;
   const {
     streamStatus,
     isStreamLoading,
