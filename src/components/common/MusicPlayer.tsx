@@ -48,7 +48,7 @@ const MusicPlayer: React.FC = () => {
                   className="rounded-md shrink-0"
                   data-ai-hint={currentTrack.hint}
                 />
-                <div className="flex-1 hidden sm:flex flex-col min-w-0 overflow-hidden">
+                <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
                   <div className="relative overflow-hidden group">
                     <p className="font-bold font-headline whitespace-nowrap text-lg group-hover:[animation-play-state:paused] animate-marquee-long-titles">
                       {currentTrack.title}
