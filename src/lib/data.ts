@@ -39,7 +39,7 @@ export type Playlist = {
 
 export const artistName = "NIKETHER";
 
-export const biography = "Rhythmic Canvas is a visionary DJ and producer who paints with sound. Blending genres from synthwave to future funk, their music creates immersive sonic landscapes. With a passion for the intersection of audio and visual art, Rhythmic Canvas's live shows are a multi-sensory experience, featuring stunning, AI-generated visuals that dance in harmony with every beat. Step into the canvas and experience music like never before.";
+export const biography = "Nik Ether’s tracks blend melodic techno, house, and Afrobeat rhythms, crafting a captivating sound with deep emotional resonance. Drawing from artists like Lane 8, NTO, Boris Brejcha, and Eelke Kleijn, Nik Ether’s music, featured in playlists such as Melodic Techno & House, Deep & Groovy, and Lofi & Chill, takes listeners on an engaging journey through fresh, nostalgic sound.";
 
 export const discography: Track[] = [
   { id: 5, title: 'Time', artist: 'NTO', genre: 'Melodic Techno', cover: getImage('album-1'), hint: getHint('album-1') },
