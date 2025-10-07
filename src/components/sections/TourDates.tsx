@@ -8,6 +8,12 @@ import { format } from "date-fns";
 import { cn } from "@/lib/utils";
 
 const TourDates: React.FC = () => {
+  // Helper to parse date as UTC to avoid timezone mismatches
+  const parseDateUTC = (dateString: string) => {
+    const [year, month, day] = dateString.split('-').map(Number);
+    return new Date(Date.UTC(year, month - 1, day));
+  };
+
   return (
     <Section id="tour" title="Performances">
       <div className="max-w-4xl mx-auto">
@@ -18,8 +24,8 @@ const TourDates: React.FC = () => {
                 <li key={item.id} className="p-4 md:p-6 flex items-center justify-between gap-4">
                   <div className="flex items-center gap-4">
                     <div className="text-center w-16">
-                      <p className="text-sm font-bold text-primary">{format(new Date(item.date), 'MMM')}</p>
-                      <p className="text-2xl font-bold font-headline">{format(new Date(item.date), 'dd')}</p>
+                      <p className="text-sm font-bold text-primary">{format(parseDateUTC(item.date), 'MMM')}</p>
+                      <p className="text-2xl font-bold font-headline">{format(parseDateUTC(item.date), 'dd')}</p>
                     </div>
                     <div>
                       <p className="font-bold font-headline text-lg">{item.city}</p>
