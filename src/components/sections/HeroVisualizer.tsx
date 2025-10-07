@@ -43,7 +43,7 @@ const HeroVisualizer: React.FC = () => {
           NIKETHER
         </h1>
         <p className="mt-4 text-lg md:text-xl max-w-2xl text-foreground/80 anim-subtitle">
-          Discover the sound.
+          Discover
         </p>
       </div>
 
