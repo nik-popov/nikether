@@ -10,7 +10,7 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-  "cf:build": "next-on-pages",
+  "cf:build": "next-on-pages && node scripts/prepare-cloudflare.js",
   "cf:deploy": "npm run cf:build && wrangler deploy",
   "cf:preview": "npm run cf:build && wrangler pages dev .vercel/output/static --binding __NEXT_ON_PAGES_RUNTIME_MANIFEST=./.vercel/output/static/_worker.js --pages-asset-binding ASSETS"
   },

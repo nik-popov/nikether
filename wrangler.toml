@@ -10,3 +10,4 @@ command = "npm run cf:build"
 [assets]
 binding = "ASSETS"
 directory = ".vercel/output/static"
+exclude = ["_worker.js"]
