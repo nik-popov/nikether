@@ -12,9 +12,9 @@ const Logo = () => (
 
 const navItems = [
   { name: "Home", id: "visuals" },
-  { name: "About", id: "about" },
   { name: "Music", id: "music" },
   { name: "Performances", id: "tour" },
+  { name: "About", id: "about" },
   { name: "Contact", id: "booking" },
 ];
 

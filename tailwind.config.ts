@@ -20,6 +20,9 @@ export default {
         body: ['var(--font-pt-sans)', 'sans-serif'],
         headline: ['var(--font-poppins)', 'sans-serif'],
       },
+      backgroundImage: {
+        'primary-gradient': 'linear-gradient(to right, hsl(var(--primary-start)), hsl(var(--primary-end)))',
+      },
       colors: {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
@@ -32,7 +35,7 @@ export default {
           foreground: 'hsl(var(--popover-foreground))',
         },
         primary: {
-          DEFAULT: 'hsl(var(--primary))',
+          DEFAULT: 'hsl(var(--primary-start))',
           foreground: 'hsl(var(--primary-foreground))',
         },
         secondary: {

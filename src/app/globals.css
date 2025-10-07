@@ -13,7 +13,8 @@
     --popover: 220 15% 15%;
     --popover-foreground: 210 20% 98%;
 
-    --primary: 217 91% 60%;
+    --primary-start: 210 100% 56%;
+    --primary-end: 230 90% 65%;
     --primary-foreground: 210 20% 98%;
 
     --secondary: 220 10% 20%;
@@ -45,7 +46,8 @@
     --popover: 220 15% 15%;
     --popover-foreground: 210 20% 98%;
 
-    --primary: 217 91% 60%;
+    --primary-start: 210 100% 56%;
+    --primary-end: 230 90% 65%;
     --primary-foreground: 210 20% 98%;
 
     --secondary: 220 10% 20%;
@@ -96,10 +98,10 @@
 
 @layer utilities {
   .text-glow {
-    text-shadow: 0 0 8px hsl(var(--primary) / 0.5), 0 0 20px hsl(var(--primary) / 0.3);
+    text-shadow: 0 0 8px hsl(var(--primary-start) / 0.5), 0 0 20px hsl(var(--primary-start) / 0.3);
   }
   .box-glow {
-    box-shadow: 0 0 12px hsl(var(--primary) / 0.3), 0 0 30px hsl(var(--primary) / 0.2);
+    box-shadow: 0 0 12px hsl(var(--primary-start) / 0.3), 0 0 30px hsl(var(--primary-start) / 0.2);
   }
   .accent-glow {
     box-shadow: 0 0 12px hsl(var(--accent) / 0.3), 0 0 30px hsl(var(--accent) / 0.2);
