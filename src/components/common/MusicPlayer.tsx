@@ -1,6 +1,8 @@
 "use client";
 
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useAppContext } from "@/contexts/AppContext";
 import { Card } from "@/components/ui/card";
 import Image from "next/image";
@@ -81,7 +83,20 @@ const MusicPlayer: React.FC = () => {
   const trackTitle = streamTrack?.title ?? streamStatus?.currentlyPlaying ?? '—';
   const trackArtist = streamTrack?.artist ?? null;
   const trackArtwork = streamTrack?.artworkUrl ?? null;
-  const [isMinimized, setIsMinimized] = useState(false);
+  const pathname = usePathname();
+  const isStreamRoute = pathname?.startsWith('/stream') ?? false;
+  const [isMinimized, setIsMinimized] = useState<boolean>(() => isStreamRoute);
+  const routeRef = useRef(isStreamRoute);
+
+  useEffect(() => {
+    if (isStreamRoute && !routeRef.current) {
+      setIsMinimized(true);
+    } else if (!isStreamRoute && routeRef.current) {
+      setIsMinimized(false);
+    }
+
+    routeRef.current = isStreamRoute;
+  }, [isStreamRoute]);
 
   const isVisible = Boolean(streamStatus || isStreamLoading || streamError);
 
@@ -207,7 +222,15 @@ const MusicPlayer: React.FC = () => {
             )}
 
             <div className="flex items-center justify-between border-t border-white/5 pt-3 text-xs text-white/60">
-              <span className="uppercase tracking-[0.28em]">Status feed</span>
+              <div className="flex items-center gap-3">
+                <span className="uppercase tracking-[0.28em]">Status feed</span>
+                <Link
+                  href="/stream"
+                  className="text-white/80 underline-offset-4 hover:text-white hover:underline"
+                >
+                  Stream link
+                </Link>
+              </div>
               <Button
                 variant="ghost"
                 size="sm"
