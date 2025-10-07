@@ -17,9 +17,9 @@ export default function Home() {
         <Header />
         <main className="flex-grow">
           <HeroVisualizer />
-          <Biography />
           <Discography />
           <TourDates />
+          <Biography />
           <Booking />
         </main>
         <MusicPlayer />

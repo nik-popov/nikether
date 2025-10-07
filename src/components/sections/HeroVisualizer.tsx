@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useMemo, useRef } from 'react';
-import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { gsap } from "gsap";
 
@@ -19,17 +18,14 @@ const HeroVisualizer: React.FC = () => {
   return (
     <section id="visuals" className="relative h-screen min-h-[700px] flex items-center justify-center text-center overflow-hidden" ref={heroRef}>
       <div className="absolute inset-0 z-0">
-        {defaultVisual && (
-          <Image
-            key={defaultVisual.imageUrl}
-            src={defaultVisual.imageUrl}
-            alt="Animated Visualizer Background"
-            fill
-            priority
-            className="object-cover animate-visualizer-pan"
-            data-ai-hint={defaultVisual.imageHint}
-          />
-        )}
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline
+          className="w-full h-full object-cover"
+          src="https://firebasestorage.googleapis.com/v0/b/firebase-studio-demos.appspot.com/o/nikether%2Fpexels-pixabay-268941.mp4?alt=media&token=8d277209-6638-48b9-913a-b8e70900f606"
+        />
         <div className="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
       </div>
 
