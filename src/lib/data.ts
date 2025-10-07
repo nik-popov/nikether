@@ -37,7 +37,7 @@ export type Playlist = {
 };
 
 
-export const artistName = "Nikether Music";
+export const artistName = "NIKETHER";
 
 export const biography = "Rhythmic Canvas is a visionary DJ and producer who paints with sound. Blending genres from synthwave to future funk, their music creates immersive sonic landscapes. With a passion for the intersection of audio and visual art, Rhythmic Canvas's live shows are a multi-sensory experience, featuring stunning, AI-generated visuals that dance in harmony with every beat. Step into the canvas and experience music like never before.";
 
