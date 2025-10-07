@@ -10,6 +10,7 @@ import Booking from "@/components/sections/Booking";
 import TourDates from "@/components/sections/TourDates";
 import Discography from "@/components/sections/Discography";
 import FeaturedPlaylists from "@/components/sections/FeaturedPlaylists";
+import Footer from "@/components/common/Footer";
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
           <Biography />
           <Booking />
         </main>
+        <Footer />
         <MusicPlayer />
       </div>
     </AppContextProvider>
