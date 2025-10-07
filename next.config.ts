@@ -79,9 +79,6 @@ const nextConfig: NextConfig = {
     return config;
   },
   compress: true,
-  experimental: {
-    optimizeCss: true, // Requires @nuxt/beasties
-  },
 };
 
 export default withBundleAnalyzer(nextConfig);
