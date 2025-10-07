@@ -3,6 +3,7 @@
 import React, { useEffect, useMemo, useRef } from 'react';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { gsap } from "gsap";
+import { ArrowDown } from 'lucide-react';
 
 const HeroVisualizer: React.FC = () => {
   const defaultVisual = useMemo(() => PlaceHolderImages.find(img => img.id === 'default-visual'), []);
@@ -36,6 +37,10 @@ const HeroVisualizer: React.FC = () => {
         <p className="mt-4 text-lg md:text-xl max-w-2xl text-foreground/80 anim-subtitle">
           An immersive audio-visual experience.
         </p>
+      </div>
+
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10">
+        <ArrowDown className="w-8 h-8 text-white/50 animate-bounce" />
       </div>
     </section>
   );
