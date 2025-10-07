@@ -66,7 +66,7 @@ const MusicPlayer: React.FC = () => {
                 <Button variant="ghost" size="icon" onClick={prevTrack}>
                     <SkipBack className="w-5 h-5" />
                 </Button>
-                <Button variant="default" size="icon" onClick={togglePlay} className="bg-primary rounded-full w-10 h-10 shadow-lg accent-glow">
+                <Button variant="outline" size="icon" onClick={togglePlay} className="rounded-full w-10 h-10 shadow-lg">
                     {isPlaying ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5" />}
                 </Button>
                 <Button variant="ghost" size="icon" onClick={nextTrack}>

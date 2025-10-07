@@ -42,7 +42,7 @@ const TourDates: React.FC = () => {
                     <Button 
                         disabled={item.status !== 'On Sale'}
                         className="hidden md:inline-flex"
-                        variant="default"
+                        variant="outline"
                     >
                         Tickets
                     </Button>
