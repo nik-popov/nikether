@@ -1,14 +1,11 @@
 "use client";
 
-import React, { useEffect, useMemo, useRef } from 'react';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
+import React, { useEffect, useRef } from 'react';
 import { gsap } from "gsap";
 import { ArrowDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const HeroVisualizer: React.FC = () => {
-  const defaultVisual = useMemo(() => PlaceHolderImages.find(img => img.id === 'default-visual'), []);
-  
   const heroRef = useRef<HTMLDivElement>(null);
   const q = gsap.utils.selector(heroRef);
 
