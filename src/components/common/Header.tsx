@@ -15,7 +15,7 @@ const navItems = [
   { name: "About", id: "about" },
   { name: "Music", id: "music" },
   { name: "Performances", id: "tour" },
-  { name: "Booking", id: "booking" },
+  { name: "Contact", id: "booking" },
 ];
 
 const Header: React.FC = () => {

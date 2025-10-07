@@ -22,8 +22,7 @@ import { useToast } from "@/hooks/use-toast";
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
   email: z.string().email("Please enter a valid email address."),
-  eventDetails: z.string().min(10, "Please provide some details about your event."),
-  message: z.string().optional(),
+  message: z.string().min(10, "Message must be at least 10 characters."),
 });
 
 const Booking: React.FC = () => {
@@ -34,7 +33,6 @@ const Booking: React.FC = () => {
         defaultValues: {
             name: "",
             email: "",
-            eventDetails: "",
             message: "",
         },
     });
@@ -42,19 +40,19 @@ const Booking: React.FC = () => {
     function onSubmit(values: z.infer<typeof formSchema>) {
         console.log(values);
         toast({
-            title: "Booking Inquiry Sent!",
-            description: "We've received your request and will get back to you shortly.",
+            title: "Inquiry Sent!",
+            description: "We've received your message and will get back to you shortly.",
         });
         form.reset();
     }
 
   return (
-    <Section id="booking" title="Contact & Booking">
+    <Section id="booking" title="Contact">
       <div className="max-w-2xl mx-auto">
         <Card className="border-white/10 bg-card backdrop-blur-sm shadow-lg">
             <CardHeader>
-                <CardTitle>Book NIKETHER</CardTitle>
-                <CardDescription>Fill out the form below to inquire about a booking.</CardDescription>
+                <CardTitle>Get In Touch</CardTitle>
+                <CardDescription>Fill out the form below to send a message.</CardDescription>
             </CardHeader>
             <CardContent>
                 <Form {...form}>
@@ -85,33 +83,20 @@ const Booking: React.FC = () => {
                                 </FormItem>
                             )}
                         />
-                         <FormField
-                            control={form.control}
-                            name="eventDetails"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Event Details</FormLabel>
-                                    <FormControl>
-                                        <Input placeholder="e.g., Corporate event, Wedding, Festival" {...field} />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
                         <FormField
                             control={form.control}
                             name="message"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Additional Message (Optional)</FormLabel>
+                                    <FormLabel>Message</FormLabel>
                                     <FormControl>
-                                        <Textarea placeholder="Tell us more about your event..." {...field} />
+                                        <Textarea placeholder="Tell us what's on your mind..." {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
                             )}
                         />
-                        <Button type="submit" className="w-full accent-glow">Submit Inquiry</Button>
+                        <Button type="submit" className="w-full accent-glow">Send Message</Button>
                     </form>
                 </Form>
             </CardContent>

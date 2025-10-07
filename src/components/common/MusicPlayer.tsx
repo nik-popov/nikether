@@ -32,7 +32,7 @@ const MusicPlayer: React.FC = () => {
 
   return (
     <div className={cn(
-        "fixed bottom-0 left-0 right-auto z-40 transition-transform duration-500 w-full md:w-1/3",
+        "fixed bottom-0 left-0 right-auto z-40 transition-transform duration-500 w-full md:w-[30rem]",
         currentTrack ? "translate-y-0" : "translate-y-full"
     )}>
       <div className="px-4 sm:px-6 lg:px-8">
@@ -49,14 +49,9 @@ const MusicPlayer: React.FC = () => {
                   data-ai-hint={currentTrack.hint}
                 />
                 <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
-                  <div className="relative overflow-hidden group">
-                    <p className="font-bold font-headline whitespace-nowrap text-lg group-hover:[animation-play-state:paused] animate-marquee-long-titles">
-                      {currentTrack.title}
-                    </p>
-                    <p className="font-bold font-headline whitespace-nowrap text-lg absolute top-0 group-hover:[animation-play-state:paused] animate-marquee2-long-titles">
-                      {currentTrack.title}
-                    </p>
-                  </div>
+                  <p className="font-bold font-headline whitespace-nowrap text-lg truncate">
+                    {currentTrack.title}
+                  </p>
                   <p className="text-sm text-muted-foreground">{currentTrack.artist}</p>
                 </div>
               </div>
