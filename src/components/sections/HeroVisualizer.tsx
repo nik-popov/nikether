@@ -35,7 +35,7 @@ const HeroVisualizer: React.FC = () => {
 
       <div className="relative z-10 p-4 flex flex-col items-center">
         <h1 className="text-6xl md:text-8xl font-black font-headline uppercase tracking-tighter text-glow anim-title">
-          Nikether Music
+          NIKETHER
         </h1>
         <p className="mt-4 text-lg md:text-xl max-w-2xl text-foreground/80 anim-subtitle">
           An immersive audio-visual experience.

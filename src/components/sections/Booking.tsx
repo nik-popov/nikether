@@ -53,7 +53,7 @@ const Booking: React.FC = () => {
       <div className="max-w-2xl mx-auto">
         <Card className="border-white/10 bg-card backdrop-blur-sm shadow-lg">
             <CardHeader>
-                <CardTitle>Book Nikether Title Music</CardTitle>
+                <CardTitle>Book NIKETHER</CardTitle>
                 <CardDescription>Fill out the form below to inquire about a booking.</CardDescription>
             </CardHeader>
             <CardContent>
