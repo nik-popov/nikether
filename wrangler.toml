@@ -1,0 +1,12 @@
+name = "nikether"
+main = ".vercel/output/static/_worker.js"
+compatibility_date = "2025-10-07"
+compatibility_flags = ["nodejs_compat"]
+workers_dev = true
+
+[build]
+command = "npm run cf:build"
+
+[assets]
+binding = "ASSETS"
+directory = ".vercel/output/static"
