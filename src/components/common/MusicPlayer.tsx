@@ -39,17 +39,24 @@ const MusicPlayer: React.FC = () => {
         <Card className="bg-secondary/50 backdrop-blur-lg border-white/10 p-4 mb-4">
           <div className="flex items-center gap-4">
             {currentTrack ? (
-              <div className="flex items-center gap-4 flex-1">
+              <div className="flex items-center gap-4 flex-1 min-w-0">
                 <Image
                   src={currentTrack.cover}
                   alt={currentTrack.title}
                   width={64}
                   height={64}
-                  className="rounded-md"
+                  className="rounded-md shrink-0"
                   data-ai-hint={currentTrack.hint}
                 />
-                <div className="flex-1 hidden sm:flex flex-col">
-                  <p className="font-bold font-headline">{currentTrack.title}</p>
+                <div className="flex-1 hidden sm:flex flex-col min-w-0 overflow-hidden">
+                  <div className="relative overflow-hidden group">
+                    <p className="font-bold font-headline whitespace-nowrap text-lg group-hover:[animation-play-state:paused] animate-marquee-long-titles">
+                      {currentTrack.title}
+                    </p>
+                    <p className="font-bold font-headline whitespace-nowrap text-lg absolute top-0 group-hover:[animation-play-state:paused] animate-marquee2-long-titles">
+                      {currentTrack.title}
+                    </p>
+                  </div>
                   <p className="text-sm text-muted-foreground">{currentTrack.artist}</p>
                 </div>
               </div>
