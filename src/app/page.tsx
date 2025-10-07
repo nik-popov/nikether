@@ -21,7 +21,7 @@ export default function Home() {
           <HeroVisualizer />
           <Discography />
           <FeaturedPlaylists />
-          <TourDates />
+          {/* <TourDates /> */}
           <Biography />
           <Booking />
         </main>
