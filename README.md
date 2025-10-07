@@ -27,6 +27,32 @@ npm run dev
 
 The app will be available on [http://localhost:9002](http://localhost:9002).
 
+## Docker Deployment
+
+Build a production image that runs the same `npm run start` process you would use on Ubuntu:
+
+```bash
+docker build -t nikether-app .
+```
+
+Run the container (the app listens on port 3000 by default). Use an env file if you need to override the Icecast settings:
+
+```bash
+docker run -d \
+	--name nikether \
+	-p 3000:3000 \
+	--env-file .env.local \
+	nikether-app
+```
+
+Set `PORT` in your environment if you want to expose a different host port:
+
+```bash
+docker run -d -p 8080:8080 -e PORT=8080 nikether-app
+```
+
+> 🛡️ The container runs as a non-root user and only needs the built assets plus production dependencies. Rebuild the image whenever dependencies or app code change.
+
 ## Cloudflare Workers Deployment
 
 Prerequisites:

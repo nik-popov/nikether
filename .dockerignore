@@ -1,0 +1,38 @@
+# Dependencies
+node_modules
+.pnpm-store
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build artifacts
+.next
+out
+.vercel
+.build
+coverage
+
+# Logs and caches
+*.log
+.DS_Store
+.cache
+.eslintcache
+
+# Env files
+.env
+.env.*
+!.env.example
+!.env.template
+
+# Git
+.git
+.gitignore
+
+# Docker
+Dockerfile
+.dockerignore
+
+# Misc
+.vscode
+.idea
+.wrangler
