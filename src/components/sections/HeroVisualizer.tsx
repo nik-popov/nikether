@@ -33,7 +33,7 @@ const HeroVisualizer: React.FC = () => {
           muted 
           playsInline
           className="w-full h-full object-cover"
-          src="https://firebasestorage.googleapis.com/v0/b/firebase-studio-demos.appspot.com/o/nikether%2Fpexels-pixabay-268941.mp4?alt=media&token=8d277209-6638-48b9-913a-b8e70900f606"
+          src="hero.mp4"
         />
         <div className="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
       </div>
