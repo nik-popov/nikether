@@ -57,8 +57,8 @@
     {
       "id": "default-visual",
       "description": "Default visualizer background",
-      "imageUrl": "https://picsum.photos/seed/visual/1920/1080",
-      "imageHint": "abstract space"
+      "imageUrl": "https://picsum.photos/seed/deepspace/1920/1080",
+      "imageHint": "abstract depth"
     }
   ]
 }
