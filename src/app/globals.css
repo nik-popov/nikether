@@ -73,6 +73,25 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  html, body {
+    overflow-x: hidden;
+  }
+  
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: 
+      radial-gradient(ellipse at center, rgba(13, 22, 40, 0) 0%, hsl(var(--background)) 100%),
+      url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCI+PGc+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iaHNsKDAsMCUsMCUpIj48L3JlY3Q+PGNpcmNsZSBjeD0iMCIgY3k9IjAiIHI9IjEuMiIgZmlsbD0id2hpdGUiPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjI1IiBjeT0iMTIiIHI9IjAuOCIgZmlsbD0id2hpdGUiPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEwIiBjeT0iMjUiIHI9IjAuNSIgZmlsbD0id2hpdGUiPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjQwIiBjeT0iMzUiIHI9IjEuNSIgZmlsbD0id2hpdGUiPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjUiIGN5PSI0NSIgcj0iMC43IiBmaWxsPSJ3aGl0ZSI+PC9jaXJjbGU+PC9nPjwvc3ZnPg==');
+    background-size: 250px 250px, 50px 50px;
+    animation: move-stars 60s linear infinite;
+  }
 }
 
 @layer utilities {

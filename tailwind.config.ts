@@ -88,12 +88,17 @@ export default {
           '0%': { transform: 'scale(1) translate(0, 0)' },
           '50%': { transform: 'scale(1.1) translate(5px, 5px)' },
           '100%': { transform: 'scale(1) translate(0, 0)' },
+        },
+        'move-stars': {
+          '0%': { 'background-position': '0 0' },
+          '100%': { 'background-position': '-500px 500px' },
         }
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
-        'visualizer-pan': 'visualizer-pan 30s ease-in-out infinite'
+        'visualizer-pan': 'visualizer-pan 30s ease-in-out infinite',
+        'move-stars': 'move-stars 60s linear infinite',
       },
     },
   },
