@@ -31,7 +31,7 @@ const FeaturedPlaylists: React.FC = () => {
                 alt={playlist.name}
                 width={500}
                 height={500}
-                className="aspect-video object-cover transition-transform duration-300 group-hover:scale-105"
+                className="aspect-square object-cover transition-transform duration-300 group-hover:scale-105"
                 data-ai-hint={playlist.hint}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
