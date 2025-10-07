@@ -1,3 +1,64 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "artist-bio",
+      "description": "A portrait of a DJ performing.",
+      "imageUrl": "https://picsum.photos/seed/djbio/800/800",
+      "imageHint": "dj performance"
+    },
+    {
+      "id": "album-1",
+      "description": "Album cover for 'Chromatic Dreams'",
+      "imageUrl": "https://picsum.photos/seed/album1/500/500",
+      "imageHint": "abstract colorful"
+    },
+    {
+      "id": "album-2",
+      "description": "Album cover for 'Neon Nights'",
+      "imageUrl": "https://picsum.photos/seed/album2/500/500",
+      "imageHint": "neon city"
+    },
+    {
+      "id": "album-3",
+      "description": "Album cover for 'Synthwave Serenity'",
+      "imageUrl": "https://picsum.photos/seed/album3/500/500",
+      "imageHint": "retro wave"
+    },
+    {
+      "id": "album-4",
+      "description": "Album cover for 'Future Funk'",
+      "imageUrl": "https://picsum.photos/seed/album4/500/500",
+      "imageHint": "futuristic funk"
+    },
+    {
+      "id": "merch-1",
+      "description": "T-shirt with Rhythmic Canvas logo",
+      "imageUrl": "https://picsum.photos/seed/merch1/500/500",
+      "imageHint": "logo t-shirt"
+    },
+    {
+      "id": "merch-2",
+      "description": "Hoodie with album art",
+      "imageUrl": "https://picsum.photos/seed/merch2/500/500",
+      "imageHint": "art hoodie"
+    },
+    {
+      "id": "merch-3",
+      "description": "Snapback cap",
+      "imageUrl": "https://picsum.photos/seed/merch3/500/500",
+      "imageHint": "snapback cap"
+    },
+    {
+      "id": "merch-4",
+      "description": "Vinyl record of 'Chromatic Dreams'",
+      "imageUrl": "https://picsum.photos/seed/merch4/500/500",
+      "imageHint": "vinyl record"
+    },
+    {
+      "id": "default-visual",
+      "description": "Default visualizer background",
+      "imageUrl": "https://picsum.photos/seed/visual/1920/1080",
+      "imageHint": "abstract space"
+    }
+  ]
 }
