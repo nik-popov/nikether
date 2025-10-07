@@ -1,11 +1,14 @@
 import type { NextConfig } from 'next';
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
 
 const nextConfig: NextConfig = {
   typescript: {
-    ignoreBuildErrors: true, // Note: Use cautiously, as this skips type checking
+    ignoreBuildErrors: true, // Caution: Use only if necessary
   },
   eslint: {
-    ignoreDuringBuilds: true, // Note: Consider running ESLint separately in CI
+    ignoreDuringBuilds: true, // Consider running ESLint separately
   },
   images: {
     remotePatterns: [
@@ -41,18 +44,17 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  // Add Webpack configuration to split chunks
   webpack: (config, { isServer }) => {
     if (!isServer) {
       config.optimization.splitChunks = {
-        ...config.optimization.splitChunks,
         chunks: 'all',
-        maxSize: 1000000, // 1MB (adjust to keep chunks under 25 MiB)
-        minSize: 100000, // Minimum size for a chunk to be created
+        maxSize: 500000, // 500KB to ensure chunks are well below 25 MiB
+        minSize: 100000,
+        maxAsyncRequests: 30,
+        maxInitialRequests: 30,
         cacheGroups: {
           default: false,
           vendors: false,
-          // Split vendor and common chunks
           framework: {
             name: 'framework',
             test: /[\\/]node_modules[\\/](react|react-dom|next)[\\/]/,
@@ -70,12 +72,10 @@ const nextConfig: NextConfig = {
     }
     return config;
   },
-  // Enable compression to reduce asset size
   compress: true,
-  // Optimize static assets
   experimental: {
-    optimizeCss: true,
+    optimizeCss: true, // Requires critters or beasties
   },
 };
 
-export default nextConfig;
+export default withBundleAnalyzer(nextConfig);
