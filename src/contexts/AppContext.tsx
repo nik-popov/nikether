@@ -59,8 +59,12 @@ export function AppContextProvider({ children }: { children: ReactNode }) {
     if (!audioRef.current) {
       const audio = new Audio();
       audio.preload = 'none';
-      audio.crossOrigin = 'anonymous';
       audioRef.current = audio;
+    }
+
+    if (audioRef.current) {
+      audioRef.current.crossOrigin = null;
+      audioRef.current.removeAttribute('crossorigin');
     }
 
     return audioRef.current;

@@ -2,6 +2,11 @@
 
 Next.js + Tailwind workspace for the Nik Ether radio experience. The site exposes a real-time view of the Icecast stream, integrates with AI-driven visuals, and ships with shadcn/ui components.
 
+## Features
+
+- **Interactive landing page** with hero visuals, discography callouts, and playlists.
+- **Live stream dashboard** at [`/stream`](http://localhost:9002/stream) that plays the broadcast, surfaces listener analytics, and lists recently spun tracks.
+
 ## Configuration
 
 Create a `.env.local` file at the project root and supply the following (defaults are provided for Nik Ether's hosted stream):
