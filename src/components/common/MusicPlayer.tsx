@@ -25,17 +25,23 @@ const MusicPlayer: React.FC = () => {
 
   const streamName = streamStatus?.streamName ?? 'Nik Ether Radio';
   const streamDescription = streamStatus?.streamDescription ?? 'Unspecified description';
-  const badgeLabel = streamStatus?.isOnline
+  const isOnline = Boolean(streamStatus?.isOnline);
+
+  const badgeLabel = isOnline
     ? 'On Air'
     : isStreamLoading
       ? 'Connecting…'
-      : 'Offline';
+      : streamStatus
+        ? 'Offline'
+        : 'Standby';
 
-  const badgeClassName = streamStatus?.isOnline
+  const badgeClassName = isOnline
     ? 'border-green-400/40 bg-green-500/20 text-green-100'
     : isStreamLoading
       ? 'border-white/30 bg-white/10 text-white/80'
-      : 'border-red-500/40 bg-red-500/20 text-red-100';
+      : streamStatus
+        ? 'border-red-500/40 bg-red-500/20 text-red-100'
+        : 'border-white/20 bg-white/5 text-white/70';
 
   const effectiveStreamError = streamError;
 
@@ -103,7 +109,7 @@ const MusicPlayer: React.FC = () => {
           className="flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-black shadow-xl hover:bg-white/90"
         >
           <Radio className="h-4 w-4" />
-          Live Status
+          {isOnline ? 'On Air' : 'Live Status'}
         </Button>
       </div>
     );
