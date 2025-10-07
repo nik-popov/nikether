@@ -32,10 +32,10 @@ const MusicPlayer: React.FC = () => {
 
   return (
     <div className={cn(
-        "fixed bottom-0 left-0 right-0 z-40 transition-transform duration-500",
+        "fixed bottom-0 left-0 right-auto z-40 transition-transform duration-500 w-full md:w-1/3",
         currentTrack ? "translate-y-0" : "translate-y-full"
     )}>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="px-4 sm:px-6 lg:px-8">
         <Card className="bg-secondary/50 backdrop-blur-lg border-white/10 p-4 mb-4">
           <div className="flex items-center gap-4">
             {currentTrack ? (
