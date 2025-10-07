@@ -69,5 +69,5 @@ export const merchandise: Merchandise[] = [
 export const featuredPlaylists: Playlist[] = [
     { id: 1, name: 'Melodic Techno & House', description: 'The finest selection of melodic techno and house tracks.', cover: getImage('playlist-1'), hint: getHint('playlist-1') },
     { id: 2, name: 'Deep & Groovy', description: 'Get lost in the deep and groovy sounds.', cover: getImage('playlist-2'), hint: getHint('playlist-2') },
-    { id: 3, name: 'Ambient & Cinematic', description: 'A journey through ambient and cinematic soundscapes.', cover: getImage('playlist-3'), hint: getHint('playlist-3') },
+    { id: 3, name: 'Lofi & Chill', description: 'A journey through ambient and cinematic soundscapes.', cover: getImage('playlist-3'), hint: getHint('playlist-3') },
 ];
