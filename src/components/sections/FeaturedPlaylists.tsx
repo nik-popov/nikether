@@ -24,7 +24,7 @@ const FeaturedPlaylists: React.FC = () => {
     <Section id="playlists" title="FEATURED PLAYLISTS">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
         {featuredPlaylists.map((playlist: Playlist) => (
-          <Card key={playlist.id} className="group overflow-hidden border-white/10 bg-card backdrop-blur-sm shadow-lg transition-all duration-300 hover:shadow-primary/30 hover:-translate-y-2 hover:shadow-2xl">
+          <Card key={playlist.id} className="group overflow-hidden border-white/10 bg-card shadow-lg transition-all duration-300 hover:shadow-primary/30 hover:-translate-y-2 hover:shadow-2xl">
             <CardContent className="p-0 relative">
               <Image
                 src={playlist.cover}

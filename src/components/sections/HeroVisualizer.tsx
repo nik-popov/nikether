@@ -35,7 +35,7 @@ const HeroVisualizer: React.FC = () => {
           className="w-full h-full object-cover"
           src="hero.mp4"
         />
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+        <div className="absolute inset-0 bg-black/60"></div>
       </div>
 
       <div className="relative z-10 p-4 flex flex-col items-center">

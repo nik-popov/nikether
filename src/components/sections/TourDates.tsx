@@ -17,7 +17,7 @@ const TourDates: React.FC = () => {
   return (
     <Section id="tour" title="Performances">
       <div className="max-w-4xl mx-auto">
-        <Card className="border-white/10 bg-card backdrop-blur-sm shadow-lg">
+        <Card className="border-white/10 bg-card shadow-lg">
           <CardContent className="p-0">
             <ul className="divide-y divide-white/10">
               {tourDates.map((item) => (

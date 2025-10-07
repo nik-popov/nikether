@@ -16,7 +16,7 @@ const Discography: React.FC = () => {
     <Section id="music" title="TOP TRACKS">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
         {discography.map((track: Track) => (
-          <Card key={track.id} className="group overflow-hidden border-white/10 bg-card backdrop-blur-sm shadow-lg transition-all duration-300 hover:shadow-primary/30 hover:-translate-y-2 hover:shadow-2xl">
+          <Card key={track.id} className="group overflow-hidden border-white/10 bg-card shadow-lg transition-all duration-300 hover:shadow-primary/30 hover:-translate-y-2 hover:shadow-2xl">
             <CardContent className="p-0 relative">
               <Image
                 src={track.cover}

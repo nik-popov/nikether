@@ -49,7 +49,7 @@ const Booking: React.FC = () => {
   return (
     <Section id="booking" title="Contact">
       <div className="max-w-2xl mx-auto">
-        <Card className="border-white/10 bg-card backdrop-blur-sm box-glow">
+        <Card className="border-white/10 bg-card box-glow">
             <CardHeader>
                 <CardTitle>Get In Touch</CardTitle>
                 <CardDescription>Fill out the form below to send a message.</CardDescription>

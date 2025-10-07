@@ -60,7 +60,7 @@ const MusicPlayer: React.FC = () => {
         currentTrack ? "translate-y-0" : "translate-y-full"
     )}>
       <div className="px-4 sm:px-6 lg:px-8">
-        <Card className="bg-secondary/50 backdrop-blur-lg border-white/10 p-4 mb-4">
+        <Card className="bg-secondary/50 border-white/10 p-4 mb-4">
           <div className="flex items-center gap-4">
             <div className="flex items-center justify-start gap-2">
                 <Button variant="ghost" size="icon" onClick={prevTrack}>
