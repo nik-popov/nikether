@@ -11,12 +11,13 @@ const Logo = () => (
       <path d="M2 7L12 12M22 7L12 12M12 22V12" stroke="hsl(var(--accent))" strokeWidth="1.5" strokeLinejoin="round"/>
       <path d="M17 4.5L7 9.5" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
     </svg>
-    <span className="text-xl font-headline font-bold text-glow">Nikether Title Music</span>
+    <span className="text-xl font-headline font-bold text-glow">Nikether Music</span>
   </div>
 );
 
 const navItems = [
   { name: "Home", id: "visuals" },
+  { name: "About", id: "about" },
   { name: "Music", id: "music" },
   { name: "Performances", id: "tour" },
   { name: "Booking", id: "booking" },

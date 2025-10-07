@@ -5,7 +5,7 @@ import { AppContextProvider } from "@/contexts/AppContext";
 import Header from "@/components/common/Header";
 import MusicPlayer from "@/components/common/MusicPlayer";
 import HeroVisualizer from "@/components/sections/HeroVisualizer";
-import ArtistPortfolio from "@/components/sections/ArtistPortfolio";
+import Biography from "@/components/sections/Biography";
 import Booking from "@/components/sections/Booking";
 import TourDates from "@/components/sections/TourDates";
 import Discography from "@/components/sections/Discography";
@@ -17,6 +17,7 @@ export default function Home() {
         <Header />
         <main className="flex-grow">
           <HeroVisualizer />
+          <Biography />
           <Discography />
           <TourDates />
           <Booking />
