@@ -83,6 +83,24 @@
       "description": "Default visualizer background",
       "imageUrl": "https://images.unsplash.com/photo-1504333638930-c8787321eee0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Z2FsYXh5JTIwc3RhcnN8ZW58MHx8fHwxNzU5Nzg0OTIzfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "galaxy stars"
+    },
+    {
+      "id": "playlist-1",
+      "description": "Playlist cover for 'Cybernetic Beats'",
+      "imageUrl": "https://picsum.photos/seed/playlist1/500/500",
+      "imageHint": "cybernetic city"
+    },
+    {
+      "id": "playlist-2",
+      "description": "Playlist cover for 'Galactic Grooves'",
+      "imageUrl": "https://images.unsplash.com/photo-1640522321132-093fa9e2e309?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxnYWxheHklMjBuZWJ1bGF8ZW58MHx8fHwxNzU5NzYwNDg1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "galaxy nebula"
+    },
+    {
+      "id": "playlist-3",
+      "description": "Playlist cover for 'Sunset Synth'",
+      "imageUrl": "https://images.unsplash.com/photo-1723965803235-0301009ea922?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxzdW5zZXQlMjBkcml2ZXxlbnwwfHx8fDE3NTk3NTI2NzF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "sunset drive"
     }
   ]
 }

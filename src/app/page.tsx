@@ -9,6 +9,7 @@ import Biography from "@/components/sections/Biography";
 import Booking from "@/components/sections/Booking";
 import TourDates from "@/components/sections/TourDates";
 import Discography from "@/components/sections/Discography";
+import FeaturedPlaylists from "@/components/sections/FeaturedPlaylists";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
         <main className="flex-grow">
           <HeroVisualizer />
           <Discography />
+          <FeaturedPlaylists />
           <TourDates />
           <Biography />
           <Booking />

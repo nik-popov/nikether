@@ -28,6 +28,15 @@ export type Merchandise = {
   hint: string;
 };
 
+export type Playlist = {
+  id: number;
+  name: string;
+  description: string;
+  cover: string;
+  hint: string;
+};
+
+
 export const artistName = "Nikether Music";
 
 export const biography = "Rhythmic Canvas is a visionary DJ and producer who paints with sound. Blending genres from synthwave to future funk, their music creates immersive sonic landscapes. With a passion for the intersection of audio and visual art, Rhythmic Canvas's live shows are a multi-sensory experience, featuring stunning, AI-generated visuals that dance in harmony with every beat. Step into the canvas and experience music like never before.";
@@ -55,4 +64,10 @@ export const merchandise: Merchandise[] = [
   { id: 2, name: 'Chromatic Dreams Hoodie', price: '$59.99', image: getImage('merch-2'), hint: getHint('merch-2') },
   { id: 3, name: 'RC Snapback', price: '$24.99', image: getImage('merch-3'), hint: getHint('merch-3') },
   { id: 4, name: 'Chromatic Dreams Vinyl', price: '$39.99', image: getImage('merch-4'), hint: getHint('merch-4') },
+];
+
+export const featuredPlaylists: Playlist[] = [
+    { id: 1, name: 'CYBERNETIC BEATS', description: 'The soundtrack for your dystopian future.', cover: getImage('playlist-1'), hint: getHint('playlist-1') },
+    { id: 2, name: 'GALACTIC GROOVES', description: 'Funky tunes from across the galaxy.', cover: getImage('playlist-2'), hint: getHint('playlist-2') },
+    { id: 3, name: 'SUNSET SYNTH', description: 'Cruising into the digital sunset.', cover: getImage('playlist-3'), hint: getHint('playlist-3') },
 ];
