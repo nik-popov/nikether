@@ -12,8 +12,8 @@ const Biography: React.FC = () => {
 
   return (
     <Section id="about" title={`ABOUT ${artistName.toUpperCase()}`}>
-        <div className="grid md:grid-cols-5 gap-8 md:gap-12 items-center max-w-5xl mx-auto">
-            <div className="md:col-span-2">
+        <div className="flex flex-col items-center gap-8 md:gap-12 max-w-3xl mx-auto">
+            <div className="w-full max-w-sm">
                 <Card className="group overflow-hidden border-white/10 bg-card backdrop-blur-sm shadow-lg box-glow">
                     <CardContent className="p-0">
                     {bioImage && (
@@ -29,8 +29,8 @@ const Biography: React.FC = () => {
                     </CardContent>
                 </Card>
             </div>
-            <div className="md:col-span-3">
-                <p className="text-lg text-foreground/80 leading-relaxed text-left md:text-justify">
+            <div>
+                <p className="text-lg text-foreground/80 leading-relaxed text-center md:text-justify">
                     {biography}
                 </p>
             </div>
