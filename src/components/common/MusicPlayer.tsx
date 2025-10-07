@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useAppContext } from "@/contexts/AppContext";
 import { Card } from "@/components/ui/card";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Badge } from '@/components/ui/badge';
-import { Music4, RefreshCw, Radio } from "lucide-react";
+import { Music4, RefreshCw, Radio, X } from "lucide-react";
 import { cn } from '@/lib/utils';
 import { formatDistanceToNow } from 'date-fns';
 
@@ -76,6 +76,8 @@ const MusicPlayer: React.FC = () => {
   const trackTitle = streamTrack?.title ?? streamStatus?.currentlyPlaying ?? '—';
   const trackArtist = streamTrack?.artist ?? null;
   const trackArtwork = streamTrack?.artworkUrl ?? null;
+  const [isMinimized, setIsMinimized] = useState(false);
+
   const isVisible = Boolean(streamStatus || isStreamLoading || streamError);
 
   const infoItems = useMemo(
@@ -87,17 +89,37 @@ const MusicPlayer: React.FC = () => {
     [listenersLabel, qualityLabel, updatedLabel]
   );
 
+  if (!isVisible && !isMinimized) {
+    return null;
+  }
+
+  if (isMinimized) {
+    return (
+      <div className="fixed bottom-4 right-4 z-40 sm:bottom-6 sm:right-6">
+        <Button
+          variant="default"
+          size="sm"
+          onClick={() => setIsMinimized(false)}
+          className="flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-black shadow-xl hover:bg-white/90"
+        >
+          <Radio className="h-4 w-4" />
+          Live Status
+        </Button>
+      </div>
+    );
+  }
+
   return (
     <div
       className={cn(
-        "fixed bottom-0 left-0 right-0 sm:left-auto sm:right-6 sm:bottom-6 z-40 transition-transform duration-500 w-full sm:w-[32rem] lg:w-[34rem]",
+        "fixed inset-x-4 bottom-4 sm:inset-x-auto sm:right-6 sm:bottom-6 z-40 transition-transform duration-500",
         isVisible ? "translate-y-0" : "translate-y-full"
       )}
     >
-      <div className="px-4 pb-4 sm:px-0">
-        <Card className="mb-4 rounded-[24px] border-white/10 bg-black/75 p-5 shadow-2xl backdrop-blur-2xl">
+      <div className="sm:px-0">
+        <Card className="rounded-[20px] border-white/10 bg-black/80 p-5 shadow-2xl backdrop-blur-2xl sm:w-[32rem] lg:w-[34rem]">
           <div className="flex flex-col gap-5">
-            <div className="flex flex-wrap items-start gap-3">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
               <div className="flex items-center gap-3">
                 <Badge
                   className={cn(
@@ -113,11 +135,25 @@ const MusicPlayer: React.FC = () => {
                   <h2 className="text-xl font-semibold text-white">{streamName}</h2>
                 </div>
               </div>
+              <div className="flex items-center justify-end gap-3">
+                <span className="text-[10px] uppercase tracking-[0.35em] text-white/45">
+                  {updatedLabel ? `Updated ${updatedLabel}` : 'Awaiting update'}
+                </span>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => setIsMinimized(true)}
+                  aria-label="Minimize live status"
+                  className="h-8 w-8 rounded-full border border-white/10 bg-white/5 text-white hover:bg-white/10"
+                >
+                  <X className="h-4 w-4" />
+                </Button>
+              </div>
             </div>
 
             <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-5">
               <div className="mx-auto flex shrink-0 items-center justify-center sm:mx-0">
-                <div className="relative aspect-square w-24 overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-inner sm:w-24 md:w-28">
+                <div className="relative aspect-square w-24 overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-inner sm:w-28">
                   {trackArtwork ? (
                     <Image
                       src={trackArtwork}
