@@ -13,7 +13,7 @@ const Section: React.FC<SectionProps> = ({ id, title, children, className, title
   return (
     <section id={id} className={cn("py-16 md:py-24", className)}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className={cn("text-4xl md:text-5xl font-bold font-headline text-center mb-12 text-glow", titleClassName)}>
+        <h2 className={cn("text-4xl md:text-5xl font-bold font-headline text-center mb-12 text-glow uppercase", titleClassName)}>
           {title}
         </h2>
         {children}

@@ -11,7 +11,7 @@ const Biography: React.FC = () => {
   const bioImage = PlaceHolderImages.find(img => img.id === 'artist-bio');
 
   return (
-    <Section id="about" title={`About ${artistName}`}>
+    <Section id="about" title={`ABOUT ${artistName.toUpperCase()}`}>
         <div className="grid md:grid-cols-5 gap-8 md:gap-12 items-center">
             <div className="md:col-span-2">
                 <Card className="group overflow-hidden border-white/10 bg-card backdrop-blur-sm shadow-lg">

@@ -1,17 +1,18 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useAppContext } from "@/contexts/AppContext";
 import { Card } from "@/components/ui/card";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Slider } from "@/components/ui/slider";
 import { Play, Pause, SkipBack, SkipForward, Music4 } from "lucide-react";
 import { cn } from '@/lib/utils';
 
 const MusicPlayer: React.FC = () => {
   const context = useAppContext();
   const [progress, setProgress] = useState(0);
+  const titleRef = useRef<HTMLDivElement>(null);
+  const [isOverflowing, setIsOverflowing] = useState(false);
 
   useEffect(() => {
     let interval: NodeJS.Timeout;
@@ -25,10 +26,33 @@ const MusicPlayer: React.FC = () => {
 
   useEffect(() => {
     setProgress(0);
+    checkOverflow();
   }, [context?.currentTrack])
   
+  const checkOverflow = () => {
+    if (titleRef.current) {
+        const { scrollWidth, clientWidth } = titleRef.current;
+        setIsOverflowing(scrollWidth > clientWidth);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', checkOverflow);
+    return () => window.removeEventListener('resize', checkOverflow);
+  }, []);
+
+
   if (!context) return null;
   const { currentTrack, isPlaying, togglePlay, nextTrack, prevTrack } = context;
+
+  const titleContainerClasses = cn("whitespace-nowrap", {
+    "animate-marquee-long-titles": isOverflowing,
+  });
+
+  const duplicateTitleContainerClasses = cn("absolute top-0 left-0 whitespace-nowrap", {
+    "animate-marquee2-long-titles": isOverflowing,
+  });
+
 
   return (
     <div className={cn(
@@ -61,9 +85,20 @@ const MusicPlayer: React.FC = () => {
                   data-ai-hint={currentTrack.hint}
                 />
                 <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
-                  <p className="font-bold font-headline whitespace-nowrap text-base truncate">
-                    {currentTrack.title}
-                  </p>
+                   <div ref={titleRef} className="relative overflow-hidden">
+                    <div className={titleContainerClasses}>
+                      <p className="font-bold font-headline whitespace-nowrap text-base truncate uppercase">
+                        {currentTrack.title}
+                      </p>
+                    </div>
+                    {isOverflowing && (
+                      <div className={duplicateTitleContainerClasses} style={{ animationDelay: '7.5s' }}>
+                        <p className="font-bold font-headline whitespace-nowrap text-base truncate uppercase">
+                            {currentTrack.title}
+                        </p>
+                      </div>
+                    )}
+                  </div>
                   <p className="text-sm text-muted-foreground">{currentTrack.artist}</p>
                 </div>
               </div>

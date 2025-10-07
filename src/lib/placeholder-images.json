@@ -8,27 +8,51 @@
     },
     {
       "id": "album-1",
-      "description": "Album cover for 'Chromatic Dreams'",
+      "description": "Album cover for 'CHROMATIC DREAMS'",
       "imageUrl": "https://picsum.photos/seed/album1/500/500",
       "imageHint": "abstract colorful"
     },
     {
       "id": "album-2",
-      "description": "Album cover for 'Neon Nights'",
+      "description": "Album cover for 'NEON NIGHTS'",
       "imageUrl": "https://picsum.photos/seed/album2/500/500",
       "imageHint": "neon city"
     },
     {
       "id": "album-3",
-      "description": "Album cover for 'Synthwave Serenity'",
+      "description": "Album cover for 'SYNTHWAVE SERENITY'",
       "imageUrl": "https://picsum.photos/seed/album3/500/500",
       "imageHint": "retro wave"
     },
     {
       "id": "album-4",
-      "description": "Album cover for 'Future Funk'",
+      "description": "Album cover for 'FUTURE FUNK'",
       "imageUrl": "https://picsum.photos/seed/album4/500/500",
       "imageHint": "futuristic funk"
+    },
+    {
+      "id": "album-5",
+      "description": "Album cover for 'COSMIC DRIFT'",
+      "imageUrl": "https://images.unsplash.com/photo-1680486481682-6828194ec366?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Y29zbWljJTIwc3BhY2V8ZW58MHx8fHwxNzU5NzE3MDc1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "cosmic space"
+    },
+    {
+      "id": "album-6",
+      "description": "Album cover for 'ECHOES IN THE VOID'",
+      "imageUrl": "https://images.unsplash.com/photo-1533134486753-c833f0ed4866?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxkYXJrJTIwYWJzdHJhY3R8ZW58MHx8fHwxNzU5NzQ2MjgxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "dark abstract"
+    },
+    {
+      "id": "album-7",
+      "description": "Album cover for 'STARGAZER'",
+      "imageUrl": "https://picsum.photos/seed/album7/500/500",
+      "imageHint": "night sky"
+    },
+    {
+      "id": "album-8",
+      "description": "Album cover for 'PULSE'",
+      "imageUrl": "https://picsum.photos/seed/album8/500/500",
+      "imageHint": "vibrant pulse"
     },
     {
       "id": "merch-1",
