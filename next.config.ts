@@ -5,10 +5,10 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 const nextConfig: NextConfig = {
   typescript: {
-    ignoreBuildErrors: true, // Caution: Use only if necessary
+    ignoreBuildErrors: true, // Caution: Use temporarily
   },
   eslint: {
-    ignoreDuringBuilds: true, // Consider running ESLint separately
+    ignoreDuringBuilds: true, // Run ESLint separately
   },
   images: {
     remotePatterns: [
@@ -48,10 +48,10 @@ const nextConfig: NextConfig = {
     if (!isServer) {
       config.optimization.splitChunks = {
         chunks: 'all',
-        maxSize: 500000, // 500KB to ensure chunks are well below 25 MiB
-        minSize: 100000,
-        maxAsyncRequests: 30,
-        maxInitialRequests: 30,
+        maxSize: 200000, // 200KB to ensure chunks are well below 25 MiB
+        minSize: 30000,
+        maxAsyncRequests: 100,
+        maxInitialRequests: 100,
         cacheGroups: {
           default: false,
           vendors: false,
@@ -67,6 +67,12 @@ const nextConfig: NextConfig = {
             priority: 20,
             reuseExistingChunk: true,
           },
+          vendor: {
+            name: 'vendor',
+            test: /[\\/]node_modules[\\/]/,
+            priority: 10,
+            reuseExistingChunk: true,
+          },
         },
       };
     }
@@ -74,7 +80,7 @@ const nextConfig: NextConfig = {
   },
   compress: true,
   experimental: {
-    optimizeCss: true, // Requires critters or beasties
+    optimizeCss: true, // Requires @nuxt/beasties
   },
 };
 
