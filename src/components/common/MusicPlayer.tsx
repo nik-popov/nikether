@@ -38,18 +38,30 @@ const MusicPlayer: React.FC = () => {
       <div className="px-4 sm:px-6 lg:px-8">
         <Card className="bg-secondary/50 backdrop-blur-lg border-white/10 p-4 mb-4">
           <div className="flex items-center gap-4">
+            <div className="flex items-center justify-start gap-2">
+                <Button variant="ghost" size="icon" onClick={prevTrack}>
+                    <SkipBack className="w-5 h-5" />
+                </Button>
+                <Button variant="default" size="icon" onClick={togglePlay} className="bg-primary rounded-full w-10 h-10 shadow-lg accent-glow">
+                    {isPlaying ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5" />}
+                </Button>
+                <Button variant="ghost" size="icon" onClick={nextTrack}>
+                    <SkipForward className="w-5 h-5" />
+                </Button>
+            </div>
+            
             {currentTrack ? (
-              <div className="flex items-center gap-4 flex-1 min-w-0">
+              <div className="flex items-center gap-3 flex-1 min-w-0">
                 <Image
                   src={currentTrack.cover}
                   alt={currentTrack.title}
-                  width={64}
-                  height={64}
+                  width={48}
+                  height={48}
                   className="rounded-md shrink-0"
                   data-ai-hint={currentTrack.hint}
                 />
                 <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
-                  <p className="font-bold font-headline whitespace-nowrap text-lg truncate">
+                  <p className="font-bold font-headline whitespace-nowrap text-base truncate">
                     {currentTrack.title}
                   </p>
                   <p className="text-sm text-muted-foreground">{currentTrack.artist}</p>
@@ -57,37 +69,11 @@ const MusicPlayer: React.FC = () => {
               </div>
             ) : (
               <div className="flex items-center gap-4 flex-1">
-                  <div className="w-16 h-16 rounded-md bg-muted flex items-center justify-center">
-                    <Music4 className="w-8 h-8 text-muted-foreground" />
+                  <div className="w-12 h-12 rounded-md bg-muted flex items-center justify-center">
+                    <Music4 className="w-6 h-6 text-muted-foreground" />
                   </div>
               </div>
             )}
-            
-            <div className="flex flex-col items-center justify-center gap-2 flex-[2]">
-                <div className="flex items-center gap-4">
-                    <Button variant="ghost" size="icon" onClick={prevTrack}>
-                        <SkipBack className="w-5 h-5" />
-                    </Button>
-                    <Button variant="default" size="icon" onClick={togglePlay} className="bg-primary rounded-full w-12 h-12 shadow-lg accent-glow">
-                        {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
-                    </Button>
-                    <Button variant="ghost" size="icon" onClick={nextTrack}>
-                        <SkipForward className="w-5 h-5" />
-                    </Button>
-                </div>
-                <div className="w-full max-w-md hidden md:block">
-                  <Slider 
-                    value={[progress]} 
-                    onValueChange={(value) => setProgress(value[0])}
-                    max={100} 
-                    step={1} 
-                    className="w-full"
-                  />
-                </div>
-            </div>
-
-            <div className="flex-1" />
-
           </div>
         </Card>
       </div>
