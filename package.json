@@ -10,9 +10,9 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "cf:build": "next-on-pages build",
-    "cf:deploy": "next-on-pages deploy",
-    "cf:preview": "wrangler pages dev .vercel/output/static --binding __NEXT_ON_PAGES_RUNTIME_MANIFEST=./.vercel/output/static/_worker.js --pages-asset-binding ASSETS"
+  "cf:build": "next-on-pages",
+  "cf:deploy": "npm run cf:build && wrangler deploy",
+  "cf:preview": "npm run cf:build && wrangler pages dev .vercel/output/static --binding __NEXT_ON_PAGES_RUNTIME_MANIFEST=./.vercel/output/static/_worker.js --pages-asset-binding ASSETS"
   },
   "dependencies": {
     "@genkit-ai/google-genai": "^1.20.0",
@@ -67,8 +67,8 @@
     "@types/react-dom": "^18",
     "eslint": "9.37.0",
     "eslint-config-next": "15.5.4",
-    "genkit-cli": "^1.20.0",
-    "@cloudflare/next-on-pages": "^1.15.0",
+  "genkit-cli": "^1.20.0",
+  "@cloudflare/next-on-pages": "^1.13.16",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "typescript": "^5",

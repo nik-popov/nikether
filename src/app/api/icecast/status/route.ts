@@ -99,6 +99,7 @@ const DEFAULT_MOUNT = process.env.ICECAST_MOUNT ?? "/stream";
 const REQUEST_TIMEOUT = Number(process.env.ICECAST_TIMEOUT ?? 5000);
 
 export const revalidate = 0;
+export const runtime = "edge";
 
 export async function GET() {
   const controller = new AbortController();

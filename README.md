@@ -41,11 +41,10 @@ wrangler login
 ### Build and preview locally
 
 ```bash
-npm run cf:build
 npm run cf:preview
 ```
 
-The preview command runs through Wrangler's Pages emulator so you can verify the Worker bundle before deploying.
+This script builds the project with `next-on-pages` and then runs Wrangler's Pages emulator so you can verify the Worker bundle before deploying. Use `npm run cf:build` if you only need to refresh the `.vercel/output` artifacts without starting the preview server.
 
 ### Deploy to Workers
 
@@ -53,4 +52,4 @@ The preview command runs through Wrangler's Pages emulator so you can verify the
 npm run cf:deploy
 ```
 
-Behind the scenes this runs `next-on-pages deploy`, which produces the Worker bundle (`.vercel/output/static/_worker.js`) and hands it to Cloudflare. Update `wrangler.toml` to customize bindings, routes, or environment-specific settings as needed.
+This script triggers a fresh `next-on-pages` build before handing the output (`.vercel/output/static/_worker.js`) to `wrangler deploy`. Update `wrangler.toml` to customize bindings, routes, or environment-specific settings as needed.
